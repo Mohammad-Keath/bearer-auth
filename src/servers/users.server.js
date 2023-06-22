@@ -9,6 +9,9 @@ const basicAuth = require('../middlewares/basicAuth')
 router.post('/signup',signup)
 router.post('/signin',basicAuth,signin)
 router.get('/secretstuff',bearerAuth,secretstuff)
+router.get('/',(req,res)=>{
+    res.json("Welcome to our server")
+})
 
 async function signup(req,res){
     let hashedPassword = await bcrypt.hash(req.body.password,5)
